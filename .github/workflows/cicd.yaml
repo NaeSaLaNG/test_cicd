@@ -14,9 +14,9 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.actor }}/est-c
-
-      -name: Deploy on secret
+        run: docker push ghcr.io/${{ github.actor }}/test-cicd
+        
+      -name: Deploy on server
       run: 
         echo ${{ secrets.SSH_KEY }} > ssh_key
-        ssh -i ubuntu@${{ secrets.HOSTNAME}}
+        ssh -i ubuntu@${{ secrets.HOSTNAME}} /home/ubuntu/deploy.sh
