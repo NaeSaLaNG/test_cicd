@@ -24,5 +24,6 @@ jobs:
         run: |
           echo "${{ secrets.SSH_KEY }}" > ssh_key
           chmod 600 ssh_key
+          mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.HOSTNAME }} >> ~/.ssh/known_hosts
           ssh -i ssh_key ubuntu@${{ secrets.HOSTNAME }} "bash /home/ubuntu/deploy.sh"
