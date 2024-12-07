@@ -15,8 +15,8 @@ jobs:
 
       - name: Push Docker image
         run: docker push ghcr.io/${{ github.actor }}/test-cicd
-        
+
       -name: Deploy on server
-      run: 
+      run: |
         echo ${{ secrets.SSH_KEY }} > ssh_key
         ssh -i ubuntu@${{ secrets.HOSTNAME}} /home/ubuntu/deploy.sh
