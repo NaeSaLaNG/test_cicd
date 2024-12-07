@@ -2,7 +2,11 @@ on: [push]
 
 jobs:
   build-deploy:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
